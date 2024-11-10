@@ -1,0 +1,130 @@
+2024-11-09 01:11:25 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:11:25 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:11:25 INFO: Added job "Weekly_Summary" to job store "default"
+2024-11-09 01:11:25 INFO: Added job "Real_Time_Alerts" to job store "default"
+2024-11-09 01:11:25 INFO: Scheduler started
+2024-11-09 01:11:25 WARNING:  * Debugger is active!
+2024-11-09 01:11:25 INFO:  * Debugger PIN: 912-198-325
+2024-11-09 01:12:04 INFO:  * Detected change in '/Users/sumrawal1/smart_hotel/run.py', reloading
+2024-11-09 01:12:05 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:12:05 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:12:05 INFO: Added job "Weekly_Summary" to job store "default"
+2024-11-09 01:12:05 INFO: Added job "Real_Time_Alerts" to job store "default"
+2024-11-09 01:12:05 INFO: Scheduler started
+2024-11-09 01:12:05 WARNING:  * Debugger is active!
+2024-11-09 01:12:05 INFO:  * Debugger PIN: 912-198-325
+2024-11-09 01:12:20 INFO:  * Detected change in '/Users/sumrawal1/smart_hotel/run.py', reloading
+2024-11-09 01:12:20 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:12:20 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:12:20 INFO: Added job "Weekly_Summary" to job store "default"
+2024-11-09 01:12:20 INFO: Added job "Real_Time_Alerts" to job store "default"
+2024-11-09 01:12:20 INFO: Scheduler started
+2024-11-09 01:12:20 WARNING:  * Debugger is active!
+2024-11-09 01:12:20 INFO:  * Debugger PIN: 912-198-325
+2024-11-09 01:12:33 INFO:  * Detected change in '/Users/sumrawal1/smart_hotel/run.py', reloading
+2024-11-09 01:12:33 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:12:33 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:12:33 INFO: Added job "Weekly_Summary" to job store "default"
+2024-11-09 01:12:33 INFO: Added job "Real_Time_Alerts" to job store "default"
+2024-11-09 01:12:33 INFO: Scheduler started
+2024-11-09 01:12:34 WARNING:  * Debugger is active!
+2024-11-09 01:12:34 INFO:  * Debugger PIN: 912-198-325
+2024-11-09 01:14:35 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:14:35 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:14:35 INFO: Added job "Weekly_Summary" to job store "default"
+2024-11-09 01:14:35 INFO: Added job "Real_Time_Alerts" to job store "default"
+2024-11-09 01:14:35 INFO: Scheduler started
+2024-11-09 01:14:35 INFO: Scheduler has been shut down
+2024-11-09 01:14:48 INFO: Scheduler has been shut down
+2024-11-09 01:14:53 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:14:53 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:14:53 INFO: Added job "Weekly_Summary" to job store "default"
+2024-11-09 01:14:53 INFO: Added job "Real_Time_Alerts" to job store "default"
+2024-11-09 01:14:53 INFO: Scheduler started
+2024-11-09 01:14:53 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-09 01:14:53 INFO: [33mPress CTRL+C to quit[0m
+2024-11-09 01:14:53 INFO:  * Restarting with stat
+2024-11-09 01:14:53 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:14:53 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:14:53 INFO: Added job "Weekly_Summary" to job store "default"
+2024-11-09 01:14:53 INFO: Added job "Real_Time_Alerts" to job store "default"
+2024-11-09 01:14:53 INFO: Scheduler started
+2024-11-09 01:14:53 WARNING:  * Debugger is active!
+2024-11-09 01:14:53 INFO:  * Debugger PIN: 912-198-325
+2024-11-09 01:16:15 INFO:  * Detected change in '/Users/sumrawal1/smart_hotel/app/routes.py', reloading
+2024-11-09 01:16:15 INFO: Scheduler has been shut down
+2024-11-09 01:16:15 INFO:  * Restarting with stat
+2024-11-09 01:16:16 INFO: Scheduler has been shut down
+2024-11-09 01:24:13 INFO: HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2024-11-09 01:24:21 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:24:21 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:24:21 INFO: Added job "Weekly_Summary" to job store "default"
+2024-11-09 01:24:21 INFO: Added job "Real_Time_Alerts" to job store "default"
+2024-11-09 01:24:21 INFO: Scheduler started
+2024-11-09 01:24:21 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-09 01:24:21 INFO: [33mPress CTRL+C to quit[0m
+2024-11-09 01:24:21 INFO:  * Restarting with stat
+2024-11-09 01:24:21 INFO: HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2024-11-09 01:24:24 INFO: HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2024-11-09 01:24:24 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:24:24 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:24:24 INFO: Added job "Weekly_Summary" to job store "default"
+2024-11-09 01:24:24 INFO: Added job "Real_Time_Alerts" to job store "default"
+2024-11-09 01:24:24 INFO: Scheduler started
+2024-11-09 01:24:24 WARNING:  * Debugger is active!
+2024-11-09 01:24:24 INFO:  * Debugger PIN: 912-198-325
+2024-11-09 01:24:25 INFO: HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2024-11-09 01:25:26 INFO:  * Detected change in '/Users/sumrawal1/smart_hotel/run.py', reloading
+2024-11-09 01:25:26 INFO: Scheduler has been shut down
+2024-11-09 01:25:27 INFO:  * Restarting with stat
+2024-11-09 01:25:29 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:25:29 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:25:29 INFO: Added job "Weekly_Summary" to job store "default"
+2024-11-09 01:25:29 INFO: Added job "Real_Time_Alerts" to job store "default"
+2024-11-09 01:25:29 INFO: Scheduler started
+2024-11-09 01:25:29 WARNING:  * Debugger is active!
+2024-11-09 01:25:29 INFO:  * Debugger PIN: 912-198-325
+2024-11-09 01:25:30 INFO: HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2024-11-09 01:25:30 INFO: HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2024-11-09 01:25:47 INFO:  * Detected change in '/Users/sumrawal1/smart_hotel/run.py', reloading
+2024-11-09 01:25:47 INFO: Scheduler has been shut down
+2024-11-09 01:25:48 INFO:  * Restarting with stat
+2024-11-09 01:25:48 INFO: Scheduler has been shut down
+2024-11-09 01:26:11 INFO: HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2024-11-09 01:26:11 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:26:11 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:26:11 INFO: Added job "Weekly_Summary" to job store "default"
+2024-11-09 01:26:11 INFO: Added job "Real_Time_Alerts" to job store "default"
+2024-11-09 01:26:11 INFO: Scheduler started
+2024-11-09 01:26:11 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-09 01:26:11 INFO: [33mPress CTRL+C to quit[0m
+2024-11-09 01:26:11 INFO: HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2024-11-09 01:26:11 INFO: HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2024-11-09 01:26:12 INFO: HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2024-11-09 01:26:31 INFO: HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2024-11-09 01:26:31 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:26:31 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:26:31 INFO: Added job "Weekly_Summary" to job store "default"
+2024-11-09 01:26:31 INFO: Added job "Real_Time_Alerts" to job store "default"
+2024-11-09 01:26:31 INFO: Scheduler started
+2024-11-09 01:26:31 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-09 01:26:31 INFO: [33mPress CTRL+C to quit[0m
+2024-11-09 01:26:31 INFO:  * Restarting with stat
+2024-11-09 01:26:32 INFO: HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2024-11-09 01:26:33 INFO: HTTP Request: GET https://api.gradio.app/gradio-messaging/en "HTTP/1.1 200 OK"
+2024-11-09 01:26:33 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:26:33 INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-11-09 01:26:33 INFO: Added job "Weekly_Summary" to job store "default"
+2024-11-09 01:26:33 INFO: Added job "Real_Time_Alerts" to job store "default"
+2024-11-09 01:26:33 INFO: Scheduler started
+2024-11-09 01:26:33 WARNING:  * Debugger is active!
+2024-11-09 01:26:33 INFO:  * Debugger PIN: 912-198-325
+2024-11-09 01:26:34 INFO: HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2024-11-09 01:33:30 INFO: HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2024-11-09 01:33:30 INFO: HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+2024-11-09 01:33:31 INFO: HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2024-11-09 01:33:31 INFO: HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
