@@ -154,4 +154,20 @@ Each endpoint can enforce these permissions by checking the user’s role before
 
 ---
 
-This documentation structure should provide clarity on each component of the Smart Hotel API, ensuring a comprehensive understanding for developers and end-users alike. Let me know if you’d like to add specific details or if you need help with any other parts!
+### Event Streaming Endpoints
+
+1. **Kafka Bootstrap Servers**
+   - **Development**: `localhost:9092`
+   - **Production**: `kafka:9092` (internal Docker network)
+
+2. **Topics**
+   - **iot_data**: Sensor data streaming
+   - **occupancy_status**: Room occupancy updates
+
+3. **Consumer Groups**
+   - **data_logger_group**: Persistent storage of sensor data
+   - **occupancy_detector_group**: Real-time occupancy analysis
+   - **analytics_group**: Statistical analysis and reporting
+
+---
+

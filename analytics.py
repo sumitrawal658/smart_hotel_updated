@@ -2,24 +2,67 @@ from datetime import datetime, timedelta
 from app import db
 from app.models import SensorLog
 from sqlalchemy import func
-
+from kafka import KafkaConsumer
+from app.agents.occupancy_detector import OccupancyDetector
+import json
 import logging
 
 logging.basicConfig(
-    filename='app.log',    # Log file name
-    level=logging.INFO,     # Set the minimum log level to capture
+    filename='app.log',
+    level=logging.INFO,
     format='%(asctime)s %(levelname)s: %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S'
 )
 
+# Initialize Kafka consumer
+consumer = KafkaConsumer(
+    'iot_data',
+    bootstrap_servers=['localhost:9092'],
+    value_deserializer=lambda x: json.loads(x.decode('utf-8'))
+)
+
+# Initialize occupancy detector
+occupancy_detector = OccupancyDetector()
+
+def consume_iot_data():
+    """Consume IoT data from Kafka and process it"""
+    for message in consumer:
+        data = message.value
+        room_id = data['room_id']
+        sensor_data = data['data']
+        
+        try:
+            # Process occupancy
+            occupancy_result = occupancy_detector.process_message({
+                'room_id': room_id,
+                'data': sensor_data,
+                'timestamp': data['timestamp']
+            })
+            
+            if occupancy_result:
+                log_alert(room_id, f"Occupancy status: {occupancy_result['is_occupied']}")
+            
+            # Store in database
+            sensor_log = SensorLog(
+                room_id=room_id,
+                sensor_type="aggregate",
+                data=sensor_data
+            )
+            db.session.add(sensor_log)
+            db.session.commit()
+            
+            logging.info(f"Processed data for room {room_id}")
+            
+        except Exception as e:
+            logging.error(f"Error processing data for room {room_id}: {e}")
+
 def log_alert(room_id, message):
     logging.info(f"{datetime.now()}: Alert in Room {room_id} - {message}")
 
-
 def calculate_weekly_summary():
+    """Your existing weekly summary code"""
     one_week_ago = datetime.now() - timedelta(days=7)
     
-    # Query each room's average CO2 and temperature over the last week
     results = db.session.query(
         SensorLog.room_id,
         func.avg(SensorLog.data['iaq']['co2'].cast(db.Float)).label('average_co2'),
@@ -32,28 +75,7 @@ def calculate_weekly_summary():
         print(f"Weekly Summary - Room {result.room_id}:")
         print(f"  Average CO2: {result.average_co2}")
         print(f"  Average Temperature: {result.average_temperature}")
-    
-    # You could save these results to a `weekly_summaries` table if you want to persist them.
 
-ALERT_THRESHOLD_CO2 = 1000  # Example threshold for CO2 in ppm
-ALERT_THRESHOLD_TEMP = 30   # Example threshold for temperature in Celsius
-
-def check_for_alerts():
-    latest_logs = db.session.query(SensorLog) \
-        .order_by(SensorLog.timestamp.desc()) \
-        .limit(10) \
-        .all()  # Adjust limit based on expected logs or frequency of check
-
-    for log in latest_logs:
-        co2_level = log.data['iaq']['co2']
-        temperature = log.data['iaq']['temperature']
-
-        if co2_level > ALERT_THRESHOLD_CO2:
-            log_alert(log.room_id, f"CO2 level exceeded threshold: {co2_level} ppm")
-
-            # Optional: Send an email, SMS, or log to alert service
-
-        if temperature > ALERT_THRESHOLD_TEMP:
-            log_alert(log.room_id, f"Temperature exceeded threshold: {temperature}°C")
-
-            # Optional: Send an email, SMS, or log to alert service
+if __name__ == "__main__":
+    logging.info("Starting IoT data consumer...")
+    consume_iot_data()

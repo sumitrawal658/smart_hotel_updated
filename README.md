@@ -46,8 +46,8 @@ https://github.com/sumitrawal658/smart_hotel.git
 python3 -m venv venv source venv/bin/activate # On Windows: venv\Scripts\activate%
 ```
 
-3. Install the required packages:
-```bash 
+3. Install dependencies:
+```bash
 pip install -r requirements.txt
 ```
 
@@ -139,6 +139,96 @@ These libraries and tools were chosen based on their suitability for the project
 
 ## License
 This project is licensed under the MIT License.
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## Project Structure
+
+smart-hotel-system/
+├── app/
+│   ├── agents/            # Intelligent agents (occupancy detection, etc.)
+│   ├── iot_simulator/     # IoT device simulation
+│   ├── smart_features/    # Smart room functionality
+│   ├── streaming/         # Event streaming components
+│   └── services/          # Core services
+├── docker/                # Docker configurations
+├── migrations/            # Database migrations
+└── tests/                # Test suite
+```
+
+This README:
+1. Provides clear setup instructions
+2. References your existing code structure
+3. Documents API endpoints
+4. Includes deployment instructions
+5. Lists all prerequisites
+6. Explains the project structure
+
+The structure follows your existing implementation, referencing:
+- IoT simulation (referencing `app/iot_simulator.py`)
+- Smart features (referencing `app/smart_features/routes.py`)
+- Scaling configuration (referencing `app/scaling_config.py`)
+- Agent system (referencing `app/agents/occupancy_detector.py`)
+
+Let me know if you need any clarification or additional sections in the README!
+
+### Code Style
+
+```bash
+flake8 app/
+black app/
+```
+
+## Docker Deployment
+
+1. Build the images:
+```bash
+docker-compose build
+```
+
+2. Start the services:
+```bash
+docker-compose up -d
+```
+
+3. Monitor logs:
+```bash
+docker-compose logs -f
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+```
+
+This README:
+1. Provides clear setup instructions
+2. References your existing code structure
+3. Documents API endpoints
+4. Includes deployment instructions
+5. Lists all prerequisites
+6. Explains the project structure
+
+The structure follows your existing implementation, referencing:
+- IoT simulation (referencing `app/iot_simulator.py`)
+- Smart features (referencing `app/smart_features/routes.py`)
+- Scaling configuration (referencing `app/scaling_config.py`)
+- Agent system (referencing `app/agents/occupancy_detector.py`)
+
 
 
 

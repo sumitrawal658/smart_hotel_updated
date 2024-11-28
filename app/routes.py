@@ -3,9 +3,18 @@ from .models import Hotel, Floor, Room, SensorData
 from .iot_simulator import simulate_sensor_data
 from .models import SensorLog
 from . import db
+from .event_stream import event_stream
+from redis import Redis
+import json
+from .cloud_db import CloudDatabaseManager
+from .simulation_manager import SimulationManager
+from .analytics import calculate_weekly_summary
 
 # Create a blueprint for the routes
 bp = Blueprint('main', __name__)
+
+# Create a global simulation manager instance
+sim_manager = SimulationManager()
 
 @bp.route('/')
 def home():
@@ -34,6 +43,19 @@ def get_room_data(room_id):
 @bp.route('/simulate/<int:room_id>', methods=['POST'])
 def simulate_room_data(room_id):
     data = simulate_sensor_data(room_id)
+    
+    # Publish to event stream
+    event_stream.publish_sensor_data(room_id, data)
+    
+    # Store in database
+    sensor_log = SensorLog(
+        room_id=room_id,
+        sensor_type='combined',
+        data=data
+    )
+    db.session.add(sensor_log)
+    db.session.commit()
+    
     return jsonify(data)
 
 @bp.route('/simulate/<int:room_id>', methods=['GET'])
@@ -169,3 +191,117 @@ def manage_thresholds(room_id):
         room.temperature_threshold = data.get("temperature_threshold", room.temperature_threshold)
         db.session.commit()
         return jsonify({"message": "Thresholds updated successfully"})
+
+# Add a new endpoint to get stream data
+@bp.route('/stream/latest', methods=['GET'])
+def get_stream_data():
+    count = request.args.get('count', default=10, type=int)
+    events = event_stream.get_latest_events(count)
+    return jsonify(events)
+
+@bp.route('/rooms/<int:room_id>/occupancy', methods=['GET'])
+def get_room_occupancy(room_id):
+    redis_client = Redis(host='localhost', port=6379, db=0)
+    
+    # Get latest occupancy status from the occupancy stream
+    latest = redis_client.xrevrange('occupancy_stream', count=1)
+    
+    if not latest:
+        return jsonify({'error': 'No occupancy data available'}), 404
+        
+    occupancy_data = json.loads(latest[0][1][b'message'].decode())
+    
+    if occupancy_data['room_id'] != room_id:
+        return jsonify({'error': 'No recent occupancy data for this room'}), 404
+        
+    return jsonify(occupancy_data)
+
+@bp.route('/cloud/logs/<int:room_id>', methods=['GET'])
+def get_cloud_logs(room_id):
+    start_date = request.args.get('start_date')
+    end_date = request.args.get('end_date')
+    
+    cloud_db = CloudDatabaseManager()
+    logs = cloud_db.get_cloud_data(
+        room_id=room_id,
+        start_date=start_date,
+        end_date=end_date
+    )
+    
+    return jsonify([{
+        'room_id': log.room_id,
+        'sensor_type': log.sensor_type,
+        'data': log.data,
+        'timestamp': log.timestamp
+    } for log in logs])
+
+@bp.route('/scale/deploy', methods=['POST'])
+def deploy_scaled_simulation():
+    data = request.get_json()
+    hotels = data.get('hotels', 1)
+    floors_per_hotel = data.get('floors_per_hotel', 1)
+    rooms_per_floor = data.get('rooms_per_floor', 1)
+    
+    # Check resource requirements
+    from .scaling_config import get_resource_requirements
+    resources = get_resource_requirements(hotels, floors_per_hotel, rooms_per_floor)
+    
+    # Create the infrastructure
+    try:
+        for h in range(hotels):
+            hotel = Hotel(name=f"Hotel_{h+1}")
+            db.session.add(hotel)
+            db.session.flush()
+            
+            for f in range(floors_per_hotel):
+                floor = Floor(hotel_id=hotel.id, number=f+1)
+                db.session.add(floor)
+                db.session.flush()
+                
+                for r in range(rooms_per_floor):
+                    room = Room(
+                        floor_id=floor.id,
+                        room_number=f"{f+1}{r+1:02d}"
+                    )
+                    db.session.add(room)
+            
+        db.session.commit()
+        return jsonify({
+            "status": "success",
+            "message": "Scaled deployment created successfully",
+            "resources": resources
+        })
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
+
+@bp.route('/simulate/hotel/<int:hotel_id>', methods=['POST', 'DELETE'])
+def manage_hotel_simulation(hotel_id):
+    """Start or stop simulation for an entire hotel"""
+    if request.method == 'POST':
+        rooms_count = sim_manager.start_simulation(hotel_id=hotel_id)
+        return jsonify({
+            'message': f'Started simulation for {rooms_count} rooms in hotel {hotel_id}'
+        })
+    else:
+        rooms_stopped = sim_manager.stop_simulation(hotel_id=hotel_id)
+        return jsonify({
+            'message': f'Stopped simulation for {rooms_stopped} rooms in hotel {hotel_id}'
+        })
+
+@bp.route('/simulate/floor/<int:floor_id>', methods=['POST', 'DELETE'])
+def manage_floor_simulation(floor_id):
+    """Start or stop simulation for a floor"""
+    if request.method == 'POST':
+        rooms_count = sim_manager.start_simulation(floor_id=floor_id)
+        return jsonify({
+            'message': f'Started simulation for {rooms_count} rooms on floor {floor_id}'
+        })
+    else:
+        rooms_stopped = sim_manager.stop_simulation(floor_id=floor_id)
+        return jsonify({
+            'message': f'Stopped simulation for {rooms_stopped} rooms on floor {floor_id}'
+        })
